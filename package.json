@@ -7,6 +7,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ReactNativeLibraries/NetworkStateListener.git"
+  },
   "keywords": [
     "react-native",
     "react",
@@ -19,5 +23,9 @@
     "network-state-listener"
   ],
   "author": "Kalebe Samuel",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ReactNativeLibraries/NetworkStateListener/issues"
+  },
+  "homepage": "https://github.com/ReactNativeLibraries/NetworkStateListener#readme"
 }
