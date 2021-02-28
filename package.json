@@ -1,0 +1,23 @@
+
+{
+  "name": "react-native-network-state-listener",
+  "version": "1.0.0",
+  "description": "The best way to check the internet status on the user's device",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native",
+    "react",
+    "react native",
+    "mobile",
+    "android",
+    "network",
+    "network state",
+    "network state listener",
+    "network-state-listener"
+  ],
+  "author": "Kalebe Samuel",
+  "license": "MIT"
+}
