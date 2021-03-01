@@ -1,38 +1,57 @@
 
-# react-native-native-location-foreground-service
+# react-native-network-state-listener
 
 ## Getting started
 
-`$ npm install react-native-native-location-foreground-service --save`
-
-### Mostly automatic installation
-
-`$ react-native link react-native-native-location-foreground-service`
-
-### Manual installation
-
-
-#### Android
-
-1. Open up `android/app/src/main/java/[...]/MainActivity.java`
-  - Add `import com.reactlibrary.RNNativeLocationForegroundServicePackage;` to the imports at the top of the file
-  - Add `new RNNativeLocationForegroundServicePackage()` to the list returned by the `getPackages()` method
-2. Append the following lines to `android/settings.gradle`:
-  	```
-  	include ':react-native-native-location-foreground-service'
-  	project(':react-native-native-location-foreground-service').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-native-location-foreground-service/android')
-  	```
-3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
-  	```
-      compile project(':react-native-native-location-foreground-service')
-  	```
-
+`$ npm i @react_native_libraries/react-native-network-state-listener`
 
 ## Usage
 ```javascript
-import RNNativeLocationForegroundService from 'react-native-native-location-foreground-service';
+import React, { useState, useEffect } from 'react';
+import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import NetworkListener from '@react_native_libraries/react-native-network-state-listener';
 
 // TODO: What to do with the module?
-RNNativeLocationForegroundService;
+const App = () => {
+  const [networkStatus, setNetworkStatus] = useState(true);
+
+  useEffect(() => {
+    (async () => {
+      await NetworkListener.startListener();
+
+      NetworkListener.onNetworkStateChange((status) => {
+        console.log("+===STATUS: ", status);
+        setNetworkStatus(status);
+      })
+    })();
+
+    return () => NetworkListener.stopListener();
+  }, []);
+
+  return (
+      <SafeAreaView style={styles.sectionContainer}>
+          <Text style={styles.sectionTitle}>Network Status:</Text>
+          {networkStatus && <Text style={styles.sectionTitle}>Connected</Text>}
+          {!networkStatus && <Text style={styles.sectionTitle}>Disconnected</Text>}
+      </SafeAreaView>
+  );
+};
+
+const styles = StyleSheet.create({
+  sectionContainer: {
+    flex: 1,
+    paddingHorizontal: 24,
+    justifyContent: 'center',
+  },
+  sectionTitle: {
+    textAlign: 'center',
+    fontSize: 24,
+    fontWeight: '600',
+    color: Colors.black,
+  }
+});
+
+export default App;
 ```
   

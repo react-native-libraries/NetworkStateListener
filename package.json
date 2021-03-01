@@ -1,7 +1,7 @@
 
 {
-  "name": "react-native-network-state-listener",
-  "version": "1.0.0",
+  "name": "@react_native_libraries/react-native-network-state-listener",
+  "version": "1.0.4",
   "description": "The best way to check the internet status on the user's device",
   "main": "index.js",
   "scripts": {
