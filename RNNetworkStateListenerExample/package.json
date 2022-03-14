@@ -7,12 +7,16 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "reinstall:js:packages": "rm -rf yarn.lock && rm -rf package-lock.json && rm -rf node_modules && yarn install",
+    "link:packages": "yarn react-native link",
+    "bundle:ios": "rm -f ./ios/main.jsbundle && react-native bundle --reset-cache --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios'",
+    "reinstall:ios:packages": "yarn reinstall:js:packages && yarn link:packages && cd ios && rm -rf Pods && rm -rf Podfile.lock && pod install && cd .. && yarn bundle:ios"
   },
   "dependencies": {
     "react": "16.13.1",
     "react-native": "0.63.4",
-    "react-native-network-state-listener": "../react-native-network-state-listener-1.0.0.tgz"
+    "react-native-network-state-listener": "../../react-native-network-state-listener"
   },
   "devDependencies": {
     "@babel/core": "^7.13.8",

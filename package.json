@@ -1,11 +1,21 @@
-
 {
-  "name": "@react_native_libraries/react-native-network-state-listener",
+  "name": "react-native-network-state-listener",
   "version": "1.0.5",
   "description": "The best way to check the internet status on the user's device",
   "main": "index.js",
+  "files": [
+    "README.md",
+    "android",
+    "index.js",
+    "ios",
+    "react-native-network-state-listener.podspec"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "reinstall:js:packages": "rm -rf yarn.lock && rm -rf package-lock.json && rm -rf node_modules && yarn install",
+    "link:packages": "yarn react-native link",
+    "bundle:ios": "rm -f ./ios/main.jsbundle && react-native bundle --reset-cache --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios'",
+    "reinstall:ios:packages": "yarn reinstall:js:packages && yarn link:packages && cd ios && rm -rf Pods && rm -rf Podfile.lock && pod install && cd .. && yarn bundle:ios"
   },
   "repository": {
     "type": "git",
